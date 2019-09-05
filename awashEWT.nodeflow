@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.drishti.dacx.nodeflow.model:NodeFlow xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.drishti.dacx.nodeflow.model="http://www.drishtisoft.com/dacx/nodeflow/nodeModel.ecore" startNode="sleepNode1" name="awashEWT.nodeflow_diagram" sciptType="nodeflow.script.interpreter.js">
+  <nodes name="sleepNode1">
+    <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/SleepNode/1.0.0/SleepNode.nodemodel#/"/>
+    <events name="sleep.node.success" defaultTransition="//@transitions.17"/>
+    <events name="sleep.node.failure" defaultTransition="//@transitions.18"/>
+    <events name="system.error"/>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="timeInMillis" staticValue="2000">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/SleepNode/1.0.0/SleepNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeNodeFlow" name="playSequenceNodeflow">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseUtilityNode/1.0.0/BaseUtilityNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeStatic" name="dataProviderType">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="preScript">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.1"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="postScript">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.2"/>
+    </attributes>
+  </nodes>
+  <nodes name="busyNode" inTransitions="//@transitions.11 //@transitions.12 //@transitions.19 //@transitions.20">
+    <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/PlayNode/1.0.0/PlayNode.nodemodel#/"/>
+    <events name="success.listen.voice.log" defaultTransition="//@transitions.0"/>
+    <events name="failure.listen.voice.log" defaultTransition="//@transitions.1"/>
+    <events name="hungup.listen.voice.log"/>
+    <events name="system.error"/>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="promptName" from="//@variables.14" static="false" staticValue="playBusy">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/PlayNode/1.0.0/PlayNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="useOptimizedMultipleFilePlayback" staticValue="false">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/PlayNode/1.0.0/PlayNode.nodemodel#//@attributes.1"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeStatic" name="noAnswerPlayback" value="false">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/PlayNode/1.0.0/PlayNode.nodemodel#//@attributes.2"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeStatic" name="dataProviderType" value="play.prompt.annc.node.data.provider">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="preScript">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.1"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="postScript">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.2"/>
+    </attributes>
+  </nodes>
+  <nodes name="expectedWaitTime" inTransitions="//@transitions.0 //@transitions.1">
+    <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/ExpectedWaitTimeNode/1.0.0/ExpectedWaitTimeNode.nodemodel#/"/>
+    <events name="success.expected.wait.time" defaultTransition="//@transitions.2"/>
+    <events name="failure.expected.wait.time" defaultTransition="//@transitions.15"/>
+    <events name="undeterminable.expected.wait.time" defaultTransition="//@transitions.3"/>
+    <events name="system.error"/>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeStatic" name="waitTimeVariable" value="waitTime">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/ExpectedWaitTimeNode/1.0.0/ExpectedWaitTimeNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="campaignId" from="//@variables.12" static="false">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/ExpectedWaitTimeNode/1.0.0/ExpectedWaitTimeNode.nodemodel#//@attributes.1"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="queueId" from="//@variables.11" static="false">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/ExpectedWaitTimeNode/1.0.0/ExpectedWaitTimeNode.nodemodel#//@attributes.2"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeStatic" name="dataProviderType" value="queue.ewt.node.data.provider">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="preScript">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.1"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="postScript">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.2"/>
+    </attributes>
+  </nodes>
+  <nodes name="waitTimeScript" inTransitions="//@transitions.2 //@transitions.15">
+    <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/ScriptNode/1.0.0/ScriptNode.nodemodel#/"/>
+    <events name="script.node.success" outTransitions="//@transitions.13" defaultTransition="//@transitions.16"/>
+    <events name="script.node.failure" defaultTransition="//@transitions.14"/>
+    <events name="system.error"/>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeStatic" name="script" value="var env;&#xA;var result=&quot;&quot;;&#xA;for(key in this) &#xA;{&#xA;result= result+(&quot;key is : &quot; + key+ &quot; value is: &quot; + this[key]);&#xA;}&#xA;env.info(&quot;globalValuesOfEwt&quot;+result);&#xA;&#xA;env.info( &quot;IVR_logs_Expected Wait Time = &quot;+waitTime);&#xA;eval ('jsonObj = ' + waitTime + ';');&#xA;ewtTime=jsonObj['ewtTime'];&#xA;var InvalidStatus;&#xA;InvalidStatus = &quot;0&quot;;&#xA;waitTimePrompt= &quot;blank&quot;;&#xA;var minWaitTime;&#xA;if (ewtTime==&quot;&quot;) &#xA;{&#xA;        InvalidStatus=&quot;1&quot;;&#xA;} &#xA;else &#xA;{&#xA;         if (ewtTime&lt;60000 ) &#xA;&#x9;{&#xA;                InvalidStatus= &quot;2&quot;;&#xA;&#x9;&#x9;waitTimePrompt=&quot;msgPlayEWT&quot;+langSuffix+&quot;,&quot;+&quot;msgPlayLesserThanOne&quot;+langSuffix+&quot;,&quot;+&quot;msgPlayMinute&quot;+langSuffix;&#xA;&#x9;&#x9;env.info(&quot;valueofewtOne&quot; +ewtTime);&#xA;        } &#xA;&#x9;else if(ewtTime>=60000 &amp;&amp; ewtTime&lt;600000 )&#xA;&#x9;{&#xA;                InvalidStatus= &quot;2&quot;;&#xA;&#x9;&#x9;minWaitTime=parseInt(ewtTime/60000);&#xA;                waitTimePrompt=&quot;msgPlayEWT&quot;+langSuffix+&quot;,&quot;+minWaitTime+langSuffix+&quot;,&quot;+&quot;msgPlayMinutes&quot;+langSuffix;&#xA;&#x9;&#x9;env.info(&quot;valueofewtTwo&quot; +ewtTime);&#xA;        }&#xA;&#x9;else if(ewtTime>=600000)&#xA;&#x9;{&#xA;                InvalidStatus= &quot;2&quot;;&#xA;&#x9;&#x9;minWaitTime=parseInt(ewtTime/60000);&#xA;&#x9;&#x9;waitTimePrompt=&quot;msgPlayEWT&quot;+langSuffix+&quot;,&quot;+&quot;msgPlayGreaterThanTen&quot;+langSuffix+&quot;,&quot;+&quot;msgPlayMinutes&quot;+langSuffix;&#x9;&#x9;&#x9;&#xA;&#x9;}&#x9;&#xA;}&#xA;env.info(&quot;valueOfInvalidStatus = &quot;+InvalidStatus);&#xA;env.info(&quot;valueOfwaitTimePrompt = &quot;+waitTimePrompt);&#xA;env.info(&quot;valueOfExpectedWaitTime = &quot;+ewtTime);&#xA;env.info(&quot;valueOfminWaitTime = &quot;+minWaitTime);">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/ScriptNode/1.0.0/ScriptNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeNodeFlow" name="playSequenceNodeflow">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseUtilityNode/1.0.0/BaseUtilityNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeStatic" name="dataProviderType">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="preScript">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.1"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="postScript">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.2"/>
+    </attributes>
+  </nodes>
+  <nodes name="playEwtMessage" inTransitions="//@transitions.13">
+    <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/PlayNode/1.0.0/PlayNode.nodemodel#/"/>
+    <events name="success.listen.voice.log" defaultTransition="//@transitions.4"/>
+    <events name="failure.listen.voice.log" defaultTransition="//@transitions.5"/>
+    <events name="hungup.listen.voice.log"/>
+    <events name="system.error"/>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="promptName" from="//@variables.9" static="false">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/PlayNode/1.0.0/PlayNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="useOptimizedMultipleFilePlayback" staticValue="false">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/PlayNode/1.0.0/PlayNode.nodemodel#//@attributes.1"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeStatic" name="noAnswerPlayback" value="false">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/PlayNode/1.0.0/PlayNode.nodemodel#//@attributes.2"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeStatic" name="dataProviderType" value="play.prompt.annc.node.data.provider">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="preScript">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.1"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="postScript">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.2"/>
+    </attributes>
+  </nodes>
+  <nodes name="queuePosition" inTransitions="//@transitions.3 //@transitions.4 //@transitions.5 //@transitions.14 //@transitions.16">
+    <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/QueuePositionNode/1.0.0/QueuePositionNode.nodemodel#/"/>
+    <events name="success" defaultTransition="//@transitions.6"/>
+    <events name="request.not.found" defaultTransition="//@transitions.7"/>
+    <events name="failure" defaultTransition="//@transitions.8"/>
+    <events name="system.error"/>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="PositionVariable" staticValue="queue_position">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/QueuePositionNode/1.0.0/QueuePositionNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeStatic" name="dataProviderType" value="queue.position.node.data.provider">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="preScript">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.1"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="postScript">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.2"/>
+    </attributes>
+  </nodes>
+  <nodes name="queuePositionScript" inTransitions="//@transitions.6 //@transitions.7 //@transitions.8">
+    <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/ScriptNode/1.0.0/ScriptNode.nodemodel#/"/>
+    <events name="script.node.success" defaultTransition="//@transitions.9"/>
+    <events name="script.node.failure" defaultTransition="//@transitions.10"/>
+    <events name="system.error"/>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeStatic" name="script" value="var env;&#xD;&#xA;&#xD;&#xA;if(queue_position==null || queue_position == '' || queue_position == '0')&#xD;&#xA;{&#xD;&#xA;&#x9;queue_position = 1;&#xD;&#xA;}&#xD;&#xA;else&#xD;&#xA;{&#xD;&#xA;&#x9;queue_position = parseInt(queue_position,10);&#xD;&#xA;&#x9;queue_position++;&#xD;&#xA;}&#xD;&#xA;queueNameMsg=&quot;msgPlayQueuePosition&quot;+langSuffix+&quot;,&quot;+queue_position+langSuffix+&quot;&quot;;&#xD;&#xA;&#xD;&#xA;if(queue_position > 10)&#xD;&#xA;{&#xD;&#xA;queueNameMsg=&quot;msgPlayQueuePosition&quot;+langSuffix+&quot;,&quot;+&quot;msgPlayGreaterThanTen&quot;+langSuffix+&quot;&quot;;&#xD;&#xA;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;env.info(&quot;valueOfQueueNameMsg=&quot;+queueNameMsg);&#xD;&#xA;env.info(&quot;valueOfQueueposition=&quot; +queue_position);">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/ScriptNode/1.0.0/ScriptNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeNodeFlow" name="playSequenceNodeflow">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseUtilityNode/1.0.0/BaseUtilityNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeStatic" name="dataProviderType">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="preScript">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.1"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="postScript">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.2"/>
+    </attributes>
+  </nodes>
+  <nodes name="playQueuePosition" inTransitions="//@transitions.9 //@transitions.10">
+    <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/PlayNode/1.0.0/PlayNode.nodemodel#/"/>
+    <events name="success.listen.voice.log" defaultTransition="//@transitions.21"/>
+    <events name="failure.listen.voice.log" defaultTransition="//@transitions.22"/>
+    <events name="hungup.listen.voice.log" defaultTransition="//@transitions.23"/>
+    <events name="system.error"/>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="promptName" from="//@variables.1" static="false">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/PlayNode/1.0.0/PlayNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="useOptimizedMultipleFilePlayback" staticValue="false">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/PlayNode/1.0.0/PlayNode.nodemodel#//@attributes.1"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeStatic" name="noAnswerPlayback" value="false">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/PlayNode/1.0.0/PlayNode.nodemodel#//@attributes.2"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeStatic" name="dataProviderType" value="play.prompt.annc.node.data.provider">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="preScript">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.1"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="postScript">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.2"/>
+    </attributes>
+  </nodes>
+  <nodes name="Music" inTransitions="//@transitions.21 //@transitions.22 //@transitions.23">
+    <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/PlayNode/1.0.0/PlayNode.nodemodel#/"/>
+    <events name="success.listen.voice.log" defaultTransition="//@transitions.11"/>
+    <events name="failure.listen.voice.log" defaultTransition="//@transitions.12"/>
+    <events name="hungup.listen.voice.log"/>
+    <events name="system.error"/>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="promptName" from="//@variables.16" static="false" staticValue="">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/PlayNode/1.0.0/PlayNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="useOptimizedMultipleFilePlayback" staticValue="false">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/PlayNode/1.0.0/PlayNode.nodemodel#//@attributes.1"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeStatic" name="noAnswerPlayback" value="false">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/PlayNode/1.0.0/PlayNode.nodemodel#//@attributes.2"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeStatic" name="dataProviderType" value="play.prompt.annc.node.data.provider">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="preScript">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.1"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="postScript">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.2"/>
+    </attributes>
+  </nodes>
+  <nodes name="childScript" inTransitions="//@transitions.17 //@transitions.18">
+    <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/ScriptNode/1.0.0/ScriptNode.nodemodel#/"/>
+    <events name="script.node.success" defaultTransition="//@transitions.19"/>
+    <events name="script.node.failure" defaultTransition="//@transitions.20"/>
+    <events name="system.error"/>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeStatic" name="script" value="var env;&#xA;var langSuffix;&#xA;var result;&#xA;for(key in this)&#xA;result= result+(&quot;key is : &quot; + key+ &quot; value is: &quot; + this[key]);&#xA;env.info(&quot;globalValueOfAwashEwt=&quot;+result);&#xA;playBusy=&quot;playBusy&quot;+langSuffix;&#xA;playMusic=&quot;playMusic&quot;+langSuffix;&#xA;env.info(&quot;valueOfplayBusy=&quot;+playBusy);&#xA;env.info(&quot;valueOfplayMusic=&quot;+playMusic);&#xA;">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/ScriptNode/1.0.0/ScriptNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeNodeFlow" name="playSequenceNodeflow">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseUtilityNode/1.0.0/BaseUtilityNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeStatic" name="dataProviderType">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.0"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="preScript">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.1"/>
+    </attributes>
+    <attributes xsi:type="com.drishti.dacx.nodeflow.model:NodeAttributeVariable" name="postScript">
+      <type href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeType/BaseNode/1.0.0/BaseNode.nodemodel#//@attributes.2"/>
+    </attributes>
+  </nodes>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="expectedWaitTime" fromNode="//@nodes.1/@events.0"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="expectedWaitTime" fromNode="//@nodes.1/@events.1"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="waitTimeScript" fromNode="//@nodes.2/@events.0"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="queuePosition" fromNode="//@nodes.2/@events.2"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="queuePosition" fromNode="//@nodes.4/@events.0"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="queuePosition" fromNode="//@nodes.4/@events.1"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="queuePositionScript" fromNode="//@nodes.5/@events.0"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="queuePositionScript" fromNode="//@nodes.5/@events.1"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="queuePositionScript" fromNode="//@nodes.5/@events.2"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="playQueuePosition" fromNode="//@nodes.6/@events.0"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="playQueuePosition" fromNode="//@nodes.6/@events.1"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="busyNode" fromNode="//@nodes.8/@events.0"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="busyNode" fromNode="//@nodes.8/@events.1"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:ConditionalTransition" toNode="playEwtMessage" onCondition="//@conditions.0" fromNode="//@nodes.3/@events.0"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="queuePosition" fromNode="//@nodes.3/@events.1"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="waitTimeScript" fromNode="//@nodes.2/@events.1"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="queuePosition" fromNode="//@nodes.3/@events.0"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="childScript" fromNode="//@nodes.0/@events.0"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="childScript" fromNode="//@nodes.0/@events.1"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="busyNode" fromNode="//@nodes.9/@events.0"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="busyNode" fromNode="//@nodes.9/@events.1"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="Music" fromNode="//@nodes.7/@events.0"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="Music" fromNode="//@nodes.7/@events.1"/>
+  <transitions xsi:type="com.drishti.dacx.nodeflow.model:UnconditionalTransition" toNode="Music" fromNode="//@nodes.7/@events.2"/>
+  <context href="plugin://com_drishti_dacx_nodeflow_util/model-data/NodeFlowType/InboundNodeFlow/1.0.0/InboundNodeFlow.nodemodel#/"/>
+  <conditions name="if_InvalidStatus_nt_1" condition="InvalidStatus==&quot;2&quot;"/>
+  <variables name="msgPlayQueuePosition"/>
+  <variables name="queueNameMsg"/>
+  <variables name="InvalidStatus" defaultValue="0"/>
+  <variables name="queue_position"/>
+  <variables name="msgPlayMinutes"/>
+  <variables name="msgPlayEWT"/>
+  <variables name="waitTime"/>
+  <variables name="msgPlayGreaterThanThirty"/>
+  <variables name="msgPlayMinute"/>
+  <variables name="waitTimePrompt" defaultValue="blank"/>
+  <variables name="msgPlayLesserThanOne"/>
+  <variables name="queueId"/>
+  <variables name="campaignId"/>
+  <variables name="result"/>
+  <variables name="playBusy"/>
+  <variables name="playMusic" defaultValue="playMusic"/>
+  <variables name="playPromotionalMessage" defaultValue="playPromotionalMessage"/>
+</com.drishti.dacx.nodeflow.model:NodeFlow>
