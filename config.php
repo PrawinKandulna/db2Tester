@@ -5,9 +5,9 @@ $password = 'db2admin';
 $hostname = '192.168.12.115';
 $port = 50001;
 
-$conn_string = "DRIVER={IBM DB2 ODBC DRIVER};DATABASE=$database;" .
-  "HOSTNAME=$hostname;PORT=$port;PROTOCOL=TCPIP;UID=$user;PWD=$password;";
-$conn = db2_connect($conn_string, '', '');
+//$conn_string = "DRIVER={IBM DB2 ODBC DRIVER};DATABASE=$database;" .
+//  "HOSTNAME=$hostname;PORT=$port;PROTOCOL=TCPIP;UID=$user;PWD=$password;";
+$conn = db2_connect($database, $user, $password);
 
 if ($conn) {
     echo "Connection succeeded.";
